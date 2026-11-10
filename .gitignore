@@ -1,0 +1,28 @@
+# Enunciados originales del curso (material no redistribuible)
+.ref/
+**/.ref/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# LaTeX (artefactos intermedios)
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+
+# Sistema
+.DS_Store
+Thumbs.db
