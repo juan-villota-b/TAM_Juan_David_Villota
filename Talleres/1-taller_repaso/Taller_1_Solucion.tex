@@ -20,11 +20,11 @@
 \usepackage{caption}
 \usepackage[hidelinks]{hyperref}
 
-\linespread{1.06}
+\linespread{1.04}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.45em}
+\setlength{\parskip}{0.42em}
 
-\captionsetup[table]{name=Cuadro, labelfont=bf, font=small, skip=5pt}
+\captionsetup[table]{name=Tabla, labelfont=bf, font=small, skip=5pt}
 \captionsetup[figure]{labelfont=bf, font=small, skip=5pt}
 
 % ---------- Paleta de las cajas ----------
@@ -254,7 +254,7 @@ $x_i^\top x_i=\norm{x_i}_2^2$.
   \item El margen de la observación corregida \emph{siempre aumenta}, en la
   cantidad estrictamente positiva $\eta(\norm{x_i}^2+1)$. El aumento no depende
   de $w$, de $b$ ni del valor actual del margen.
-  \item El aumento es proporcional a $\norm{x_i}^2$: observaciones con norma
+  \item El aumento crece con $\norm{x_i}^2$: observaciones con norma
   grande reciben una corrección mayor. Por eso, si las variables tienen escalas
   muy distintas, conviene normalizarlas antes de entrenar.
   \item Aumentar el margen \emph{no garantiza} que la observación quede bien
@@ -430,7 +430,8 @@ exactitudes y la Figura~\ref{fig:datos} muestra los datos.
   \includegraphics[width=0.72\textwidth]{p2_datos.pdf}
   \caption{Datos de \texttt{make\_moons} con \texttt{noise=0.20}. Puntos
   rellenos: entrenamiento; huecos: prueba. El ruido hace que las dos lunas se
-  solapen, así que ninguna frontera las separa perfectamente.}
+  solapen, de modo que una frontera simple no las separa; $k=1$ solo logra
+  separarlas memorizando el entrenamiento.}
   \label{fig:datos}
 \end{figure}
 
@@ -439,7 +440,7 @@ exactitudes y la Figura~\ref{fig:datos} muestra los datos.
   \includegraphics[width=\textwidth]{p2_regiones.pdf}
   \caption{Regiones de decisión con los datos de entrenamiento superpuestos.
   Izquierda: $k=1$, frontera quebrada con islas locales. Derecha: $k=15$,
-  frontera suave que promedia un vecindario amplio.}
+  frontera más regular que promedia un vecindario amplio.}
   \label{fig:regiones}
 \end{figure}
 
