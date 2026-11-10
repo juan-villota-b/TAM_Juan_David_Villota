@@ -26,3 +26,6 @@ venv/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Metadatos de herramientas
+.atl/
