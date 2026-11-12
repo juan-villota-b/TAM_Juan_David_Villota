@@ -1,0 +1,10 @@
+{
+  "model": "dense",
+  "test_loss": 0.19841748476028442,
+  "test_accuracy": 0.9713000059127808,
+  "epochs": 30,
+  "batch_size": 32,
+  "params": 51450,
+  "tensorflow": "2.21.0",
+  "trained_at": "2026-11-12T01:34:37+00:00"
+}

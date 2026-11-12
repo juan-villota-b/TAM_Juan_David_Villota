@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MNIST · Clasificador de dígitos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="head">
+        <p class="eyebrow">MNIST · Red densa + Convolucional</p>
+        <h1>Clasificador de dígitos</h1>
+        <p class="lede">
+          Subí una imagen de un dígito escrito a mano. Se normaliza a 28×28 y cada
+          modelo devuelve la probabilidad de las 10 clases.
+        </p>
+      </header>
+
+      <section class="panel">
+        <div
+          id="dropzone"
+          class="dropzone"
+          role="button"
+          tabindex="0"
+          aria-label="Elegir o arrastrar una imagen de un dígito"
+        >
+          <svg class="dropzone-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 16V4m0 0L8 8m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p class="dropzone-title">Arrastrá una imagen acá</p>
+          <p class="dropzone-hint">o hacé clic para elegirla · también podés pegarla con Ctrl+V</p>
+          <input
+            id="file"
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/bmp,image/gif"
+            hidden
+          />
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <p id="error" class="error" role="alert" hidden></p>
+
+        <div id="result" class="result" hidden>
+          <div class="tabs" role="tablist" aria-label="Modelo">
+            <button
+              type="button"
+              class="tab"
+              role="tab"
+              id="tab-dense"
+              aria-controls="panel-dense"
+              aria-selected="true"
+              data-model="dense"
+            >
+              Red densa
+            </button>
+            <button
+              type="button"
+              class="tab"
+              role="tab"
+              id="tab-conv"
+              aria-controls="panel-conv"
+              aria-selected="false"
+              tabindex="-1"
+              data-model="conv"
+            >
+              Convolucional
+            </button>
+          </div>
+
+          <section
+            class="model-panel"
+            role="tabpanel"
+            id="panel-dense"
+            aria-labelledby="tab-dense"
+            data-model="dense"
+          >
+            <p class="label">Predicción</p>
+            <p class="digit" data-role="digit">–</p>
+            <p class="conf">Confianza <strong data-role="conf">–</strong></p>
+            <div class="dist" data-role="dist" aria-label="Probabilidad por dígito"></div>
+          </section>
+
+          <section
+            class="model-panel"
+            role="tabpanel"
+            id="panel-conv"
+            aria-labelledby="tab-conv"
+            data-model="conv"
+            hidden
+          >
+            <p class="label">Predicción</p>
+            <p class="digit" data-role="digit">–</p>
+            <p class="conf">Confianza <strong data-role="conf">–</strong></p>
+            <div class="dist" data-role="dist" aria-label="Probabilidad por dígito"></div>
+          </section>
+
+          <div class="shots">
+            <figure class="shot">
+              <img id="original" alt="Imagen que subiste" />
+              <figcaption>Original</figcaption>
+            </figure>
+            <figure class="shot">
+              <img id="processed" class="pixel" alt="Imagen normalizada a 28 por 28" />
+              <figcaption>Entrada a los modelos · 28×28</figcaption>
+            </figure>
+          </div>
+
+          <button type="button" class="again" id="reset">Probar otra imagen</button>
+        </div>
+      </section>
+
+      <footer class="foot">
+        La imagen se procesa en memoria y nunca se escribe en disco.
+      </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

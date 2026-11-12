@@ -1,0 +1,35 @@
+[project]
+name = "mnist-mlp"
+version = "1.0.0"
+description = "MLP classifier for MNIST with a local web interface for uploading images"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "tensorflow>=2.16",
+    "numpy>=1.26",
+    "pillow>=10.0",
+    "opencv-python-headless>=4.9",
+    "scipy>=1.11",
+    "flask>=3.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+mnist-train = "mnist_app.train:main"
+mnist-serve = "mnist_app.app:main"
+mnist-predict = "mnist_app.predict:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mnist_app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# ROS 2 exports pytest plugins into PYTHONPATH; block them so a sourced
+# ROS workspace cannot break this project's own test run.
+addopts = "-p no:launch_testing -p no:launch_ros -p no:ament_lint -p no:ament_pep257 -p no:ament_flake8 -p no:ament_mypy -p no:ament_copyright"

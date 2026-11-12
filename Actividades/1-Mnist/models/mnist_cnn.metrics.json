@@ -1,0 +1,10 @@
+{
+  "model": "conv",
+  "test_loss": 0.16966336965560913,
+  "test_accuracy": 0.9869999885559082,
+  "epochs": 30,
+  "batch_size": 32,
+  "params": 387466,
+  "tensorflow": "2.21.0",
+  "trained_at": "2026-11-12T01:51:01+00:00"
+}
